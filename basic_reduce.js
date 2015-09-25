@@ -51,3 +51,14 @@ Given an Array of strings, use Array#reduce to create an object that contains th
 */
 
 
+function countWords(inputWords) {
+	return inputWords.reduce(function(previousValue, currentValue) {
+		if ( previousValue[currentValue] === undefined )
+			previousValue[currentValue]= 0;
+		previousValue[currentValue]++;
+		return previousValue;
+	} , {});
+}
+    
+module.exports = countWords
+
