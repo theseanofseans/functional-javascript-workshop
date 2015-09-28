@@ -71,4 +71,24 @@ For simplicity, your implementation of reduce need not replicate the behaviour o
 
 */
 
+function reduce(arr, fn , initial) {
+	var o_prev= initial;
+	var o_curr= arr[0];
+	var o_index= 0;
+	if ( initial === undefined ) {
+		o_prev= arr[0];
+		o_curr= arr[1];
+		o_index= 1;
+	}
+
+	function inner_reduce( arr, fn , prev, curr, index) {
+		if ((index >= arr.length) || (index < 0))
+			return prev;
+		return inner_reduce( arr, fn , fn(prev, curr, index++, arr) , arr[index] , index );
+	}
+
+	return inner_reduce( arr, fn , o_prev , o_curr , o_index );
+}
+
+module.exports = reduce;
 
