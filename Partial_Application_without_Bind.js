@@ -112,4 +112,12 @@ Also contrast apply with Function.prototype.call:
  » To verify your program, run: functional-javascript verify program.js
  » For help run: functional-javascript help
 */
+    
+var slice = Array.prototype.slice;
+    
+function logger(namespace) {
+	return (function() { console.log.apply( console , [namespace , slice.call(arguments).join(' ') ]) });
+}
+    
+module.exports = logger
 
