@@ -102,3 +102,15 @@ Example:
  » For help run: functional-javascript help
 */
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
+
+function duckCount() {
+	if (arguments.length < 1) 
+		return 0;
+	var count= 0;
+	if ( Object.prototype.hasOwnProperty.call(arguments[0], 'quack') )
+		count++;
+	return count + duckCount.apply( this , Array.prototype.slice.call(arguments , 1 ) );
+}
+
+module.exports = duckCount;
