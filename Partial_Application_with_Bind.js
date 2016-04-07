@@ -51,4 +51,7 @@ Make sure all arguments passed to the returned logging function are printed.
  » For help run: functional-javascript help
 */
 
+module.exports = function(namespace) {
+	return console.log.bind( console , namespace );
+}
 
