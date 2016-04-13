@@ -46,3 +46,12 @@ A function map that applies a function to each item in an array and collects the
  » For help run: functional-javascript help
 */
 
+module.exports = function arrayMap(arr, fn) {
+	totalArray= [];
+	var wrapper= (function(previousValue , currentValue) {
+		totalArray.push( fn.apply(this,[currentValue]) );
+		return totalArray;
+	});
+	return arr.reduce(wrapper , []);
+}
+
